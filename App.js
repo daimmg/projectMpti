@@ -8,10 +8,13 @@ import AsyncStorage from '@react-native-community/async-storage';
 import User from './config/User';
 
 import Home from './screens/Home';
+import Notif2 from './screens/Notif2';
 import Login from './screens/Login';
 import Profile from './screens/Profile';
 import AuthLoading from './screens/AuthLoading';
+import Notifikasi from './screens/Notifikasi';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Keterangan from './screens/Keterangan';
 
 const HomeStack = createStackNavigator({
   Home: Home,
@@ -21,6 +24,17 @@ const HomeStack = createStackNavigator({
 
 const ProfilStack = createStackNavigator({
   Profile: Profile,
+});
+
+const NotifikasiStack = createStackNavigator({
+  Notifikasi: Notifikasi,
+  Notif2: Notif2,
+
+});
+
+const KeteranganStack = createStackNavigator({
+  Keterangan: Keterangan
+
 });
 
 
@@ -61,21 +75,53 @@ ProfilStack.navigationOptions = ({ navigation }) => {
   };
 };
 
+NotifikasiStack.navigationOptions = ({ navigation }) => {
+  let tabBarVisible = true;
+  if (navigation.state.index > 0) {
+    tabBarVisible = false;
+  }
+
+  return {
+    tabBarVisible,
+    tabBarBadge: 4,
+    tabBarLabel: 'Notifikasi',
+    tabBarIcon: ({ focused, horizontal, tintColor }) => {
+      return <Icon size={24} name='ios-notifications' color={tintColor} />;
+    }
+  };
+};
+
+KeteranganStack.navigationOptions = ({ navigation }) => {
+  let tabBarVisible = true;
+  if (navigation.state.index > 0) {
+    tabBarVisible = false;
+  }
+
+  return {
+    tabBarVisible,
+    tabBarLabel: 'Keluar Masuk',
+    tabBarIcon: ({ focused, horizontal, tintColor }) => {
+      return <Icon size={24} name='ios-notifications' color={tintColor} />;
+    }
+  };
+};
+
 const Tab = createMaterialBottomTabNavigator(
   {
     HomeStack: HomeStack,
-    ProfilStack: ProfilStack,
+    NotifikasiStack: NotifikasiStack,
+    KeteranganStack: KeteranganStack,
+    ProfilStack: ProfilStack
   }, {
 
   initialRouteName: 'HomeStack',
-  activeColor: '#ff4500',
+  activeColor: '#FF0099',
   inactiveColor: '#000000',
   resetOnBlur: true,
   shifting: true,
   labeled: true,
   barStyle: { backgroundColor: '#fff', paddingBottom: 10 }
 })
-
 
 
 export default createAppContainer(

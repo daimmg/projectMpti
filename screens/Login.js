@@ -86,7 +86,7 @@ export default class Login extends Component {
     }
   }
 
-  masuk() {
+  async masuk() {
     this.setState({ loading1: true })
     if (isNaN(this.state.email)) {
 
@@ -127,10 +127,21 @@ export default class Login extends Component {
       this.setState({ errorPass: 'Password Kurang Dari 8 Kata', loading1: false })
       this.view.bounce(800).then(endState => console.log(endState.finished ? 'bounce finished' : 'bounce cancelled'));
     } else {
-      
-            this.setState({ loading1: false });
-            alert("berhasil Login")
-            this.props.navigation.navigate("Tab");
+      try {
+        var user = {
+          email: this.state.email,
+          password: this.state.password
+        };
+
+        await AsyncStorage.setItem('user', JSON.stringify(user));
+        User.email  = this.state.email;
+        User.password = this.state.password;
+        this.setState({ loading1: false }); 
+        this.props.navigation.navigate("Tab");
+      } catch (e) {
+        alert("error");
+      }
+            
 
     }
   }

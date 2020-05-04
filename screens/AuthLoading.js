@@ -33,7 +33,6 @@ export default class AuthLoading extends Component {
     }
   };
 
-  // Render any loading content that you like here
   render() {
     return (
       <View>
