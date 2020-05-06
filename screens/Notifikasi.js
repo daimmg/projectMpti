@@ -11,6 +11,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const { width, height } = Dimensions.get("window");
 
+
 export default class Notifikasi extends Component {
     constructor(props) {
         super(props);
@@ -22,7 +23,7 @@ export default class Notifikasi extends Component {
             <View style={styles.container}>
                 <ScrollView>
                     <View style={{ width: width, alignItems: 'center', marginBottom: 10 }}>
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate("Notif2")} style={{ backgroundColor: '#fff', alignItems: 'center', width: '90%', height: 70, marginTop: 10, borderRadius: 10, elevation: 5, shadowColor: 'black', flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate("Notif2")} style={{ backgroundColor: '#fff', alignItems: 'center', width: '90%', height: 70, marginTop: 10, borderRadius: 10, borderColor: '#dcdcdc', borderBottomWidth: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
                             <ImageBackground source={require("../images/dito.jpg")} imageStyle={{ borderRadius: 5, height: '100%', width: '100%' }} style={{ backgroundColor: '#fff', width: 65, height: 65, marginLeft: 3, borderRadius: 5 }}></ImageBackground>
                             <View style={{ backgroundColor: '#fff', width: '75%', height: 65, marginLeft: 3, borderRadius: 5, marginRight: 10 }}>
                                 <Text style={{ fontWeight: 'bold', marginLeft: 10, marginBottom: 5 }}>Dio Dava Ramadha</Text>
@@ -33,7 +34,7 @@ export default class Notifikasi extends Component {
 
                         </TouchableOpacity>
 
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate("Notif2")} style={{ backgroundColor: '#fff', alignItems: 'center', width: '90%', height: 70, marginTop: 10, borderRadius: 10, elevation: 5, shadowColor: 'black', flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate("Notif2")} style={{ backgroundColor: '#fff', alignItems: 'center', width: '90%', height: 70, marginTop: 10, borderRadius: 10, borderColor: '#dcdcdc', borderBottomWidth: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
                             <ImageBackground source={require("../images/w1.jpg")} imageStyle={{ borderRadius: 5, height: '100%', width: '100%' }} style={{ backgroundColor: '#fff', width: 65, height: 65, marginLeft: 3, borderRadius: 5 }}></ImageBackground>
                             <View style={{ backgroundColor: '#fff', width: '75%', height: 65, marginLeft: 3, borderRadius: 5, marginRight: 10 }}>
                                 <Text style={{ fontWeight: 'bold', marginLeft: 10, marginBottom: 5 }}>Erika</Text>
@@ -44,7 +45,7 @@ export default class Notifikasi extends Component {
 
                         </TouchableOpacity>
 
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate("Notif2")} style={{ backgroundColor: '#fff', alignItems: 'center', width: '90%', height: 70, marginTop: 10, borderRadius: 10, elevation: 5, shadowColor: 'black', flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate("Notif2")} style={{ backgroundColor: '#fff', alignItems: 'center', width: '90%', height: 70, marginTop: 10, borderRadius: 10, borderColor: '#dcdcdc', borderBottomWidth: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
                             <ImageBackground source={require("../images/w4.jpg")} imageStyle={{ borderRadius: 5, height: '100%', width: '100%' }} style={{ backgroundColor: '#fff', width: 65, height: 65, marginLeft: 3, borderRadius: 5 }}></ImageBackground>
                             <View style={{ backgroundColor: '#fff', width: '75%', height: 65, marginLeft: 3, borderRadius: 5, marginRight: 10 }}>
                                 <Text style={{ fontWeight: 'bold', marginLeft: 10, marginBottom: 5 }}>Indah</Text>
@@ -55,7 +56,7 @@ export default class Notifikasi extends Component {
 
                         </TouchableOpacity>
 
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate("Notif2")} style={{ backgroundColor: '#fff', alignItems: 'center', width: '90%', height: 70, marginTop: 10, borderRadius: 10, elevation: 5, shadowColor: 'black', flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate("Notif2")} style={{ backgroundColor: '#fff', alignItems: 'center', width: '90%', height: 70, marginTop: 10, borderRadius: 10, borderColor: '#dcdcdc', borderBottomWidth: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
                             <ImageBackground source={require("../images/w2.jpg")} imageStyle={{ borderRadius: 5, height: '100%', width: '100%' }} style={{ backgroundColor: '#fff', width: 65, height: 65, marginLeft: 3, borderRadius: 5 }}></ImageBackground>
                             <View style={{ backgroundColor: '#fff', width: '75%', height: 65, marginLeft: 3, borderRadius: 5, marginRight: 10 }}>
                                 <Text style={{ fontWeight: 'bold', marginLeft: 10, marginBottom: 5 }}>Imam</Text>
@@ -66,7 +67,7 @@ export default class Notifikasi extends Component {
 
                         </TouchableOpacity>
 
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate("Notif2")} style={{ backgroundColor: '#fff', alignItems: 'center', width: '90%', height: 70, marginTop: 10, borderRadius: 10, elevation: 5, shadowColor: 'black', flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate("Notif2")} style={{ backgroundColor: '#fff', alignItems: 'center', width: '90%', height: 70, marginTop: 10, borderRadius: 10, borderColor: '#dcdcdc', borderBottomWidth: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
                             <ImageBackground source={require("../images/w3.jpg")} imageStyle={{ borderRadius: 5, height: '100%', width: '100%' }} style={{ backgroundColor: '#fff', width: 65, height: 65, marginLeft: 3, borderRadius: 5 }}></ImageBackground>
                             <View style={{ backgroundColor: '#fff', width: '75%', height: 65, marginLeft: 3, borderRadius: 5, marginRight: 10 }}>
                                 <Text style={{ fontWeight: 'bold', marginLeft: 10, marginBottom: 5 }}>Karin</Text>
@@ -77,7 +78,7 @@ export default class Notifikasi extends Component {
 
                         </TouchableOpacity>
 
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate("Notif2")} style={{ backgroundColor: '#fff', alignItems: 'center', width: '90%', height: 70, marginTop: 10, borderRadius: 10, elevation: 5, shadowColor: 'black', flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate("Notif2")} style={{ backgroundColor: '#fff', alignItems: 'center', width: '90%', height: 70, marginTop: 10, borderRadius: 10, borderColor: '#dcdcdc', borderBottomWidth: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
                             <ImageBackground source={require("../images/w5.jpg")} imageStyle={{ borderRadius: 5, height: '100%', width: '100%' }} style={{ backgroundColor: '#fff', width: 65, height: 65, marginLeft: 3, borderRadius: 5 }}></ImageBackground>
                             <View style={{ backgroundColor: '#fff', width: '75%', height: 65, marginLeft: 3, borderRadius: 5, marginRight: 10 }}>
                                 <Text style={{ fontWeight: 'bold', marginLeft: 10, marginBottom: 5 }}>Karina</Text>
@@ -88,7 +89,7 @@ export default class Notifikasi extends Component {
 
                         </TouchableOpacity>
 
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate("Notif2")} style={{ backgroundColor: '#fff', alignItems: 'center', width: '90%', height: 70, marginTop: 10, borderRadius: 10, elevation: 5, shadowColor: 'black', flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate("Notif2")} style={{ backgroundColor: '#fff', alignItems: 'center', width: '90%', height: 70, marginTop: 10, borderRadius: 10, borderColor: '#dcdcdc', borderBottomWidth: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
                             <ImageBackground source={require("../images/w6.jpg")} imageStyle={{ borderRadius: 5, height: '100%', width: '100%' }} style={{ backgroundColor: '#fff', width: 65, height: 65, marginLeft: 3, borderRadius: 5 }}></ImageBackground>
                             <View style={{ backgroundColor: '#fff', width: '75%', height: 65, marginLeft: 3, borderRadius: 5, marginRight: 10 }}>
                                 <Text style={{ fontWeight: 'bold', marginLeft: 10, marginBottom: 5 }}>Vexana</Text>
@@ -99,7 +100,7 @@ export default class Notifikasi extends Component {
 
                         </TouchableOpacity>
 
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate("Notif2")} style={{ backgroundColor: '#fff', alignItems: 'center', width: '90%', height: 70, marginTop: 10, borderRadius: 10, elevation: 5, shadowColor: 'black', flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate("Notif2")} style={{ backgroundColor: '#fff', alignItems: 'center', width: '90%', height: 70, marginTop: 10, borderRadius: 10, borderColor: '#dcdcdc', borderBottomWidth: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
                             <ImageBackground source={require("../images/w7.jpg")} imageStyle={{ borderRadius: 5, height: '100%', width: '100%' }} style={{ backgroundColor: '#fff', width: 65, height: 65, marginLeft: 3, borderRadius: 5 }}></ImageBackground>
                             <View style={{ backgroundColor: '#fff', width: '75%', height: 65, marginLeft: 3, borderRadius: 5, marginRight: 10 }}>
                                 <Text style={{ fontWeight: 'bold', marginLeft: 10, marginBottom: 5 }}>Freya</Text>

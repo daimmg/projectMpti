@@ -6,7 +6,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 import AsyncStorage from '@react-native-community/async-storage';
 import User from './config/User';
-
+import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons';
 import Home from './screens/Home';
 import Notif2 from './screens/Notif2';
 import Login from './screens/Login';
@@ -101,7 +101,7 @@ KeteranganStack.navigationOptions = ({ navigation }) => {
     tabBarVisible,
     tabBarLabel: 'Keluar Masuk',
     tabBarIcon: ({ focused, horizontal, tintColor }) => {
-      return <Icon size={24} name='ios-notifications' color={tintColor} />;
+      return <Icon2 size={24} name='currency-eth' color={tintColor} />;
     }
   };
 };

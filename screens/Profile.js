@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon1 from 'react-native-vector-icons/Ionicons';
+import Icon3 from 'react-native-vector-icons/FontAwesome';
 import User from '../config/User';
 import AsyncStorage from '@react-native-community/async-storage';
 const { width, height } = Dimensions.get("window");
@@ -129,7 +130,7 @@ export default class Profil extends Component {
                                 <View style={{ backgroundColor: '#fff', width: width / 1.15, height: 49, justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', borderRadius: 5, marginRight: 12 }}>
 
                                     <View style={{ backgroundColor: '#fff', width: 50, height: 49, alignItems: 'center', justifyContent: 'center', borderRadius: 5, marginLeft: 1 }}>
-                                        <Icon name="format-list-checkbox" size={20} />
+                                        <Icon name="account-settings" size={20} />
                                     </View>
                                     <View style={{ backgroundColor: '#fff', width: 240, height: 49, justifyContent: 'center' }}>
                                         <Text style={{ fontWeight: '700', color: '#696969' }}>Sabeni Alexander</Text>
@@ -161,7 +162,7 @@ export default class Profil extends Component {
                                 <View style={{ backgroundColor: '#fff', width: width / 1.15, height: 49, justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', borderRadius: 5, marginRight: 12 }}>
 
                                     <View style={{ backgroundColor: '#fff', width: 50, height: 49, alignItems: 'center', justifyContent: 'center', borderRadius: 5, marginLeft: 1 }}>
-                                        <Icon name="cellphone-lock" size={20} />
+                                        <Icon name="gender-male" size={20} />
                                     </View>
                                     <View style={{ backgroundColor: '#fff', width: 240, height: 49, justifyContent: 'center' }}>
                                         <Text style={{ fontWeight: '700', color: '#696969' }}>Laki Laki</Text>

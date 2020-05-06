@@ -13,6 +13,13 @@ import { shadow } from 'react-native-paper';
 
 const { width, height } = Dimensions.get("window");
 
+const IS_IPHONE_X = height === 812 || height === 896;
+const STATUS_BAR_HEIGHT = Platform.OS === 'ios' ? (IS_IPHONE_X ? 170 : 130) : 130;
+const MARGIN = Platform.OS === 'ios' ? (IS_IPHONE_X ? 35 : 10) : 10;
+const HEADER_HEIGHT = Platform.OS === 'ios' ? (IS_IPHONE_X ? 90 : 65) : 65;
+const NAV_BAR_HEIGHT = HEADER_HEIGHT - STATUS_BAR_HEIGHT;
+const STATUS_BAR_HEIGHT2 = Platform.OS === 'ios' ? (IS_IPHONE_X ? 80 : 50) : 50;
+
 export default class Home extends Component {
     constructor(props) {
         super(props);
@@ -26,8 +33,8 @@ export default class Home extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <ImageBackground source={require('../images/Yoda.jpg')} style={{ backgroundColor: '#fff', width: width, height: 65, justifyContent: 'center', alignItems: 'center' }}>
-                    <Text style={{ color: '#fff', fontWeight: 'bold', marginTop: 10, fontSize: 17 }}>Home</Text>
+                <ImageBackground source={require('../images/Yoda.jpg')} style={{ backgroundColor: '#fff', width: width, height: HEADER_HEIGHT, justifyContent: 'center', alignItems: 'center' }}>
+                    <Text style={{ color: '#fff', fontWeight: 'bold', marginTop: MARGIN, fontSize: 17 }}>Home</Text>
                 </ImageBackground>
                 <ScrollView>
                     <View style={{ width: width, alignItems: 'center' }}>
