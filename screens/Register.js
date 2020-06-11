@@ -195,7 +195,7 @@ export default class Login extends Component {
     } else {
       return (
 
-        <ImageBackground source={require("../images/satp.jpg")} style={styles.container}>
+        <ImageBackground source={require("../images/dio.jpg")} style={styles.container}>
 
           <View>
             <Animatable.View ref={this.handleViewRef}>

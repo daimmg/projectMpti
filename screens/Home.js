@@ -33,7 +33,7 @@ export default class Home extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <ImageBackground source={require('../images/Yoda.jpg')} style={{ backgroundColor: '#fff', width: width, height: HEADER_HEIGHT, justifyContent: 'center', alignItems: 'center' }}>
+                <ImageBackground source={require('../images/gt.jpg')} style={{ backgroundColor: '#fff', width: width, height: HEADER_HEIGHT, justifyContent: 'center', alignItems: 'center' }}>
                     <Text style={{ color: '#fff', fontWeight: 'bold', marginTop: MARGIN, fontSize: 17 }}>Home</Text>
                 </ImageBackground>
                 <ScrollView>
@@ -45,8 +45,8 @@ export default class Home extends Component {
                         </View>
                         <Image source={require("../images/qr.jpg")} style={{ height: 200, width: 200, marginTop: 25 }} />
 
-                        <TouchableOpacity style={{ height: 50, width: '60%', backgroundColor: 'red', marginTop: 50, alignItems: 'center', justifyContent: 'center', borderRadius: 10 }}>
-                            <ImageBackground source={require('../images/Yoda.jpg')} imageStyle={{ borderRadius: 10 }} style={{ backgroundColor: '#fff', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', borderRadius: 10 }}>
+                        <TouchableOpacity style={{ height: 50, width: '60%', backgroundColor: 'red', marginTop: 50, alignItems: 'center', justifyContent: 'center', borderRadius: 10 }} onPress={() => this.props.navigation.navigate("Camera")}>
+                            <ImageBackground source={require('../images/gt.jpg')} imageStyle={{ borderRadius: 10 }} style={{ backgroundColor: '#fff', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', borderRadius: 10 }}>
                                 <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 17 }}>Scan</Text>
                             </ImageBackground>
                         </TouchableOpacity>

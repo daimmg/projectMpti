@@ -11,13 +11,18 @@ import Home from './screens/Home';
 import Notif2 from './screens/Notif2';
 import Login from './screens/Login';
 import Profile from './screens/Profile';
+import Register from './screens/Register';
 import AuthLoading from './screens/AuthLoading';
 import Notifikasi from './screens/Notifikasi';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Keterangan from './screens/Keterangan';
+import Camera from './screens/Camera';
+import Validasi from './screens/Validasi';
 
 const HomeStack = createStackNavigator({
   Home: Home,
+  Camera: Camera,
+  Validasi: Validasi
 });
 
 
@@ -115,8 +120,8 @@ const Tab = createMaterialBottomTabNavigator(
   }, {
 
   initialRouteName: 'HomeStack',
-  activeColor: '#FF0099',
-  inactiveColor: '#000000',
+  activeColor: '#2C5364',
+  inactiveColor: '#dcdcdc',
   resetOnBlur: true,
   shifting: true,
   labeled: true,
@@ -129,6 +134,7 @@ export default createAppContainer(
     {
       AuthLoading: AuthLoading,
       Login: Login,
+      Register: Register,
       Tab: Tab
     },
     {

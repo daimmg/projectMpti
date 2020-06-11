@@ -98,7 +98,7 @@ export default class Profil extends Component {
                         )
                     }>
                 <Animated.View style={{ width: width, height: 300, backgroundColor: 'transparent', alignItems: 'center', opacity: 1 }}>
-                    <ImageBackground source={require('../images/Yoda.jpg')} imageStyle={{ height: 260, width: width }} style={{ width: width, height: 235, backgroundColor: 'transparent', alignItems: 'center', flexDirection: 'column', justifyContent: 'space-between' }}>
+                    <ImageBackground source={require('../images/gt.jpg')} imageStyle={{ height: 260, width: width }} style={{ width: width, height: 235, backgroundColor: 'transparent', alignItems: 'center', flexDirection: 'column', justifyContent: 'space-between' }}>
                         <TouchableOpacity>
                             <ImageBackground source={require('../images/harimau.jpg')} imageStyle={{ borderRadius: 50 }} style={{ width: 100, height: 100, backgroundColor: '#fff', borderRadius: 50, justifyContent: 'flex-end', alignItems: 'center', marginTop: 50 }}>
                                 <View style={{ backgroundColor: '#ff4500', width: 40, height: 40, opacity: 1.0, borderRadius: 20, left: 20, top: 10, alignItems: 'center', justifyContent: 'center', opacity: 0.5 }}>
@@ -106,11 +106,11 @@ export default class Profil extends Component {
                                 </View>
                             </ImageBackground>
                         </TouchableOpacity>
-                        <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 25, marginTop: 10 }}>Dio Dava Ramadha</Text>
+                        <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 25, marginTop: 10 }}>Sabeni Alexander</Text>
                         <Text style={{ color: '#fff', fontWeight: '600', fontSize: 15, marginBottom: 140 }}>Kelengkapan Profil: 80%</Text>
                     </ImageBackground>
                     <TouchableOpacity style={{ width: width, height: 50, alignItems: 'center', justifyContent: 'center', marginBottom: 100 }}>
-                        <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#bc4e9c', '#f80759']} style={{ width: width / 1.20, height: 50, borderRadius: 25, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', }}>
+                        <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#0F2027', '#f80759']} style={{ width: width / 1.20, height: 50, borderRadius: 25, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', }}>
                             <View style={{ width: 40, height: 40, backgroundColor: '#fff', alignItems: 'center', justifyContent: 'center', marginLeft: 5, borderRadius: 25 }}>
                                 <Icon name="border-color" size={30} style={{ paddingTop: 10 }} />
 

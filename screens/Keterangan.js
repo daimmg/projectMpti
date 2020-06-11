@@ -38,6 +38,11 @@ export default class Keterangan extends Component {
                 </View>
                 <ScrollView>
                     <View style={{ width: width, alignItems: 'center' }}>
+                    <TouchableOpacity style={{ height: 50, width: '60%', backgroundColor: 'red', marginTop: 10, marginBottom: 10, alignItems: 'center', justifyContent: 'center', borderRadius: 10 }} onPress={() => alert("Data Terkirim")}>
+                            <ImageBackground source={require('../images/gt.jpg')} imageStyle={{ borderRadius: 10 }} style={{ backgroundColor: '#fff', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', borderRadius: 10 }}>
+                                <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 17 }}>Kirim Data Ke Ketua Rt</Text>
+                            </ImageBackground>
+                        </TouchableOpacity>
                         <TouchableOpacity onPress={() => this.props.navigation.navigate("Notif2")} style={{ backgroundColor: '#fff', alignItems: 'center', width: '90%', height: 70, marginTop: 5, borderRadius: 10, elevation: 5, shadowColor: '#dcdcdc', flexDirection: 'row', justifyContent: 'space-between', marginBottom: 10, shadowOpacity: 1, shadowRadius: 5, shadowOffset: { height: 1, width: 1 } }}>
                             <ImageBackground source={require("../images/dito.jpg")} imageStyle={{ borderRadius: 5, height: '100%', width: '100%' }} style={{ backgroundColor: '#fff', width: 65, height: 65, marginLeft: 3, borderRadius: 5 }}></ImageBackground>
                             <View style={{ backgroundColor: '#fff', width: '55%', height: 65, marginLeft: 3, borderRadius: 5, marginRight: 10 }}>
@@ -48,12 +53,12 @@ export default class Keterangan extends Component {
                             </View>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => this.props.navigation.navigate("Notif2")} style={{ backgroundColor: '#fff', alignItems: 'center', width: '90%', height: 70, marginTop: 5, borderRadius: 10, elevation: 5, shadowColor: '#dcdcdc', flexDirection: 'row', justifyContent: 'space-between', marginBottom: 10, shadowOpacity: 1, shadowRadius: 5, shadowOffset: { height: 1, width: 1 } }}>
-                            <ImageBackground source={require("../images/dito.jpg")} imageStyle={{ borderRadius: 5, height: '100%', width: '100%' }} style={{ backgroundColor: '#fff', width: 65, height: 65, marginLeft: 3, borderRadius: 5 }}></ImageBackground>
+                            <ImageBackground source={require("../images/w3.jpg")} imageStyle={{ borderRadius: 5, height: '100%', width: '100%' }} style={{ backgroundColor: '#fff', width: 65, height: 65, marginLeft: 3, borderRadius: 5 }}></ImageBackground>
                             <View style={{ backgroundColor: '#fff', width: '55%', height: 65, marginLeft: 3, borderRadius: 5, marginRight: 10 }}>
-                                <Text style={{ fontWeight: 'bold', marginLeft: 10, marginTop: 20, color: '#696969' }}>Dio Dava Ramadha</Text>
+                                <Text style={{ fontWeight: 'bold', marginLeft: 10, marginTop: 20, color: '#696969' }}>Alicia</Text>
                             </View>
                             <View style={{ backgroundColor: '#fff', height: 65, width: "20%", marginRight: 10, justifyContent: 'center', alignItems: 'center' }}>
-                                <Text style={{ fontWeight: 'bold', color: 'red' }}>Keluar</Text>
+                                <Text style={{ fontWeight: 'bold', color: '#696969' }}>Masuk</Text>
                             </View>
                         </TouchableOpacity>
                     </View>
