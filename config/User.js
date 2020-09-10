@@ -1,14 +1,11 @@
 const User = {
-    id_user: null,
-    username: null,
-    email: null,
-    password: null,
-    jk: null,
-    no_tlp: null,
+    id_satpam: null,
     nama: null,
-    alamat: null,
-    avatar_user: null,
-    loginWith: null
-}
+    username: null,
+    password: null,
+    email: null,
+    foto: null,
+    notif: null
+};
 
 export default User;

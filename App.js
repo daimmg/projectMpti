@@ -18,6 +18,11 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Keterangan from './screens/Keterangan';
 import Camera from './screens/Camera';
 import Validasi from './screens/Validasi';
+import DataMotor from './screens/DataMotor';
+import DetailProfil from './screens/DetailProfil';
+import { Ip } from './config/Ip';
+
+var data;
 
 const HomeStack = createStackNavigator({
   Home: Home,
@@ -25,10 +30,9 @@ const HomeStack = createStackNavigator({
   Validasi: Validasi
 });
 
-
-
 const ProfilStack = createStackNavigator({
   Profile: Profile,
+  DetailProfil: DetailProfil
 });
 
 const NotifikasiStack = createStackNavigator({
@@ -38,7 +42,8 @@ const NotifikasiStack = createStackNavigator({
 });
 
 const KeteranganStack = createStackNavigator({
-  Keterangan: Keterangan
+  Keterangan: Keterangan,
+  DataMotor: DataMotor
 
 });
 
@@ -88,7 +93,7 @@ NotifikasiStack.navigationOptions = ({ navigation }) => {
 
   return {
     tabBarVisible,
-    tabBarBadge: 4,
+    tabBarBadge: User.notif != 0 ? User.notif : null,
     tabBarLabel: 'Notifikasi',
     tabBarIcon: ({ focused, horizontal, tintColor }) => {
       return <Icon size={24} name='ios-notifications' color={tintColor} />;
@@ -104,7 +109,7 @@ KeteranganStack.navigationOptions = ({ navigation }) => {
 
   return {
     tabBarVisible,
-    tabBarLabel: 'Keluar Masuk',
+    tabBarLabel: 'Cari Plat',
     tabBarIcon: ({ focused, horizontal, tintColor }) => {
       return <Icon2 size={24} name='currency-eth' color={tintColor} />;
     }
@@ -114,15 +119,15 @@ KeteranganStack.navigationOptions = ({ navigation }) => {
 const Tab = createMaterialBottomTabNavigator(
   {
     HomeStack: HomeStack,
-    NotifikasiStack: NotifikasiStack,
     KeteranganStack: KeteranganStack,
+    NotifikasiStack: NotifikasiStack,
     ProfilStack: ProfilStack
   }, {
 
   initialRouteName: 'HomeStack',
   activeColor: '#2C5364',
   inactiveColor: '#dcdcdc',
-  resetOnBlur: true,
+  resetOnBlur: false,
   shifting: true,
   labeled: true,
   barStyle: { backgroundColor: '#fff', paddingBottom: 10 }

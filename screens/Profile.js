@@ -86,151 +86,113 @@ export default class Profil extends Component {
         })
         return (
             <View style={styles.container}>
-                <Animated.ScrollView scrollEventThrottle={16} onScroll={
-                        Animated.event(
-                            [{
-                                nativeEvent: {
-                                    contentOffset: {
-                                        y: this.state.scrollY
-                                    }
-                                }
-                            }]
-                        )
-                    }>
-                <Animated.View style={{ width: width, height: 300, backgroundColor: 'transparent', alignItems: 'center', opacity: 1 }}>
-                    <ImageBackground source={require('../images/gt.jpg')} imageStyle={{ height: 260, width: width }} style={{ width: width, height: 235, backgroundColor: 'transparent', alignItems: 'center', flexDirection: 'column', justifyContent: 'space-between' }}>
-                        <TouchableOpacity>
-                            <ImageBackground source={require('../images/harimau.jpg')} imageStyle={{ borderRadius: 50 }} style={{ width: 100, height: 100, backgroundColor: '#fff', borderRadius: 50, justifyContent: 'flex-end', alignItems: 'center', marginTop: 50 }}>
-                                <View style={{ backgroundColor: '#ff4500', width: 40, height: 40, opacity: 1.0, borderRadius: 20, left: 20, top: 10, alignItems: 'center', justifyContent: 'center', opacity: 0.5 }}>
-                                    <Icon name="camera" size={30} style={{ top: 4 }} ></Icon>
-                                </View>
-                            </ImageBackground>
-                        </TouchableOpacity>
-                        <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 25, marginTop: 10 }}>Sabeni Alexander</Text>
-                        <Text style={{ color: '#fff', fontWeight: '600', fontSize: 15, marginBottom: 140 }}>Kelengkapan Profil: 80%</Text>
-                    </ImageBackground>
-                    <TouchableOpacity style={{ width: width, height: 50, alignItems: 'center', justifyContent: 'center', marginBottom: 100 }}>
-                        <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#0F2027', '#f80759']} style={{ width: width / 1.20, height: 50, borderRadius: 25, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', }}>
-                            <View style={{ width: 40, height: 40, backgroundColor: '#fff', alignItems: 'center', justifyContent: 'center', marginLeft: 5, borderRadius: 25 }}>
-                                <Icon name="border-color" size={30} style={{ paddingTop: 10 }} />
-
-                            </View>
-                            <Text style={{ color: '#fff', fontWeight: '600' }}>Lengkapi Profile</Text>
-                            <View style={{ width: 45, height: 45, backgroundColor: 'transparent', alignItems: 'center', justifyContent: 'center', marginLeft: 2, borderRadius: 25 }}></View>
-                        </LinearGradient>
-                    </TouchableOpacity>
-
-                </Animated.View>
-
                 
-                    
-                        <View style={{ backgroundColor: '#fff', alignItems: 'center' }}>
+                    <View style={{ width: width, height: 300, backgroundColor: 'transparent', alignItems: 'center', opacity: 1 }}>
+                        <ImageBackground source={require('../images/gt.jpg')} imageStyle={{ height: 260, width: width }} style={{ width: width, height: 235, backgroundColor: 'transparent', alignItems: 'center', flexDirection: 'column', justifyContent: 'space-between' }}>
+                            <TouchableOpacity>
+                                <ImageBackground source={require('../images/harimau.jpg')} imageStyle={{ borderRadius: 50 }} style={{ width: 100, height: 100, backgroundColor: '#fff', borderRadius: 50, justifyContent: 'flex-end', alignItems: 'center', marginTop: 50 }}>
+                                </ImageBackground>
+                            </TouchableOpacity>
+                            <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 25, marginTop: 10 }}>{User.nama}</Text>
+                            <Text style={{ color: '#fff', fontWeight: '600', fontSize: 15, marginBottom: 140 }}>{User.email}</Text>
+                        </ImageBackground>
+                        <TouchableOpacity style={{ width: width, height: 50, alignItems: 'center', justifyContent: 'center', marginBottom: 100 }}>
+                            <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#0F2027', '#f80759']} style={{ width: width / 1.20, height: 50, borderRadius: 25, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', }}>
+                                <View style={{ width: 40, height: 40, backgroundColor: '#fff', alignItems: 'center', justifyContent: 'center', marginLeft: 5, borderRadius: 25 }}>
+                                    <Icon1 name="ios-person" size={30} style={{}} />
 
-                            <View style={Platform.OS == 'android' ? styles.menu2 : styles.menu}>
-                                <View style={{ backgroundColor: '#fff', width: width / 1.15, height: 49, justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', borderRadius: 5, marginRight: 12 }}>
-
-                                    <View style={{ backgroundColor: '#fff', width: 50, height: 49, alignItems: 'center', justifyContent: 'center', borderRadius: 5, marginLeft: 1 }}>
-                                        <Icon name="account-settings" size={20} />
-                                    </View>
-                                    <View style={{ backgroundColor: '#fff', width: 240, height: 49, justifyContent: 'center' }}>
-                                        <Text style={{ fontWeight: '700', color: '#696969' }}>Sabeni Alexander</Text>
-                                    </View>
-                                    <View style={{ backgroundColor: '#fff', width: 50, height: 49, alignItems: 'flex-end', justifyContent: 'center', borderRadius: 5 }}>
-                                        <Icon1 name="ios-arrow-forward" size={20} />
-                                    </View>
                                 </View>
-                                <View style={{ height: 1, width: width / 1.10, alignItems: 'flex-end' }}>
-                                    <View style={{ backgroundColor: "#dcdcdc", height: 1, width: width / 1.30 }}></View>
+                                <Text style={{ color: '#fff', fontWeight: '600', fontSize: 16 }}>Petugas Keamanan Komplek</Text>
+                                <View style={{ width: 45, height: 45, backgroundColor: 'transparent', alignItems: 'center', justifyContent: 'center', marginLeft: 2, borderRadius: 25 }}></View>
+                            </LinearGradient>
+                        </TouchableOpacity>
+
+                    </View>
+                    <Animated.ScrollView scrollEventThrottle={16}>
+                    <View style={{ backgroundColor: '#fff', alignItems: 'center' }}>
+
+                        <View style={Platform.OS == 'android' ? styles.menu2 : styles.menu}>
+                            <View style={{ backgroundColor: '#fff', width: width / 1.15, height: 49, justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', borderRadius: 5, marginRight: 12 }}>
+
+                                <View style={{ backgroundColor: '#fff', width: 50, height: 49, alignItems: 'center', justifyContent: 'center', borderRadius: 5, marginLeft: 1 }}>
+                                    <Icon name="account-settings" size={20} />
                                 </View>
-
-                                <View style={{ backgroundColor: '#fff', width: width / 1.15, height: 49, justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', borderRadius: 5, marginRight: 12 }}>
-
-                                    <View style={{ backgroundColor: '#fff', width: 50, height: 49, alignItems: 'center', justifyContent: 'center', borderRadius: 5, marginLeft: 1 }}>
-                                        <Icon name="cloud-question" size={20} />
-                                    </View>
-                                    <View style={{ backgroundColor: '#fff', width: 240, height: 49, justifyContent: 'center' }}>
-                                        <Text style={{ fontWeight: '700', color: '#696969' }}>Petugas Keamanan</Text>
-                                    </View>
-                                    <View style={{ backgroundColor: '#fff', width: 50, height: 49, alignItems: 'flex-end', justifyContent: 'center', borderRadius: 5 }}>
-                                        <Icon1 name="ios-arrow-forward" size={20} />
-                                    </View>
+                                <View style={{ backgroundColor: '#fff', width: 240, height: 49, justifyContent: 'center' }}>
+                                    <Text style={{ fontWeight: '700', color: '#696969' }}>{User.email}</Text>
                                 </View>
+                                <View style={{ backgroundColor: '#fff', width: 50, height: 49, alignItems: 'flex-end', justifyContent: 'center', borderRadius: 5 }}>
 
-                                <View style={{ height: 1, width: width / 1.10, alignItems: 'flex-end' }}>
-                                    <View style={{ backgroundColor: "#dcdcdc", height: 1, width: width / 1.30 }}></View>
                                 </View>
-                                <View style={{ backgroundColor: '#fff', width: width / 1.15, height: 49, justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', borderRadius: 5, marginRight: 12 }}>
-
-                                    <View style={{ backgroundColor: '#fff', width: 50, height: 49, alignItems: 'center', justifyContent: 'center', borderRadius: 5, marginLeft: 1 }}>
-                                        <Icon name="gender-male" size={20} />
-                                    </View>
-                                    <View style={{ backgroundColor: '#fff', width: 240, height: 49, justifyContent: 'center' }}>
-                                        <Text style={{ fontWeight: '700', color: '#696969' }}>Laki Laki</Text>
-                                    </View>
-                                    <View style={{ backgroundColor: '#fff', width: 50, height: 49, alignItems: 'flex-end', justifyContent: 'center', borderRadius: 5 }}>
-                                        <Icon1 name="ios-arrow-forward" size={20} />
-                                    </View>
-                                </View>
-
-                                <View style={{ height: 1, width: width / 1.10, alignItems: 'flex-end' }}>
-                                    <View style={{ backgroundColor: "#dcdcdc", height: 1, width: width / 1.30 }}></View>
-                                </View>
-
-                                <View style={{ backgroundColor: '#fff', width: width / 1.15, height: 49, justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', borderRadius: 5, marginRight: 12 }}>
-
-                                    <View style={{ backgroundColor: '#fff', width: 50, height: 49, alignItems: 'center', justifyContent: 'center', borderRadius: 5, marginLeft: 1 }}>
-                                        <Icon name="star" size={20} />
-                                    </View>
-                                    <View style={{ backgroundColor: '#fff', width: 240, height: 49, justifyContent: 'center' }}>
-                                        <Text style={{ fontWeight: '700', color: '#696969' }}>Jaga Malam</Text>
-                                    </View>
-                                    <View style={{ backgroundColor: '#ff', width: 50, height: 49, alignItems: 'flex-end', justifyContent: 'center', borderRadius: 5 }}>
-                                        <Icon1 name="ios-arrow-forward" size={20} />
-                                    </View>
-                                </View>
-
+                            </View>
+                            <View style={{ height: 1, width: width / 1.10, alignItems: 'flex-end' }}>
+                                <View style={{ backgroundColor: "#dcdcdc", height: 1, width: width / 1.30 }}></View>
                             </View>
 
+                            <View style={{ backgroundColor: '#fff', width: width / 1.15, height: 49, justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', borderRadius: 5, marginRight: 12 }}>
 
-                            <View style={Platform.OS == 'android' ? [styles.menu2, { height: 52 }] : [styles.menu, { height: 52 }]}>
-                                <TouchableOpacity onPress={() => this.logout()} style={{ backgroundColor: '#fff', width: width / 1.15, height: 49, justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', borderRadius: 5, marginRight: 12 }}>
+                                <View style={{ backgroundColor: '#fff', width: 50, height: 49, alignItems: 'center', justifyContent: 'center', borderRadius: 5, marginLeft: 1 }}>
+                                    <Icon name="cloud-question" size={20} />
+                                </View>
+                                <View style={{ backgroundColor: '#fff', width: 240, height: 49, justifyContent: 'center' }}>
+                                    <Text style={{ fontWeight: '700', color: '#696969' }}>Petugas Keamanan</Text>
+                                </View>
+                                <View style={{ backgroundColor: '#fff', width: 50, height: 49, alignItems: 'flex-end', justifyContent: 'center', borderRadius: 5 }}>
 
-                                    <View style={{ backgroundColor: '#fff', width: 50, height: 49, alignItems: 'center', justifyContent: 'center', borderRadius: 5, marginLeft: 1 }}>
-                                        <Icon name="login" size={20} />
-                                    </View>
-                                    <View style={{ backgroundColor: '#fff', width: 240, height: 49, justifyContent: 'center' }}>
-                                        <Text style={{ fontWeight: '700', color: '#696969' }}>Logout</Text>
-                                    </View>
-                                    <View style={{ backgroundColor: '#fff', width: 50, height: 49, alignItems: 'flex-end', justifyContent: 'center', borderRadius: 5 }}>
-                                        <Icon1 name="ios-arrow-forward" size={20} />
-                                    </View>
-                                </TouchableOpacity>
-
-
+                                </View>
                             </View>
-                            
-                            
 
-                            
+                            <View style={{ height: 1, width: width / 1.10, alignItems: 'flex-end' }}>
+                                <View style={{ backgroundColor: "#dcdcdc", height: 1, width: width / 1.30 }}></View>
+                            </View>
+                            <View style={{ backgroundColor: '#fff', width: width / 1.15, height: 49, justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', borderRadius: 5, marginRight: 12 }}>
 
+                                <View style={{ backgroundColor: '#fff', width: 50, height: 49, alignItems: 'center', justifyContent: 'center', borderRadius: 5, marginLeft: 1 }}>
+                                    <Icon name="gender-male" size={20} />
+                                </View>
+                                <View style={{ backgroundColor: '#fff', width: 240, height: 49, justifyContent: 'center' }}>
+                                    <Text style={{ fontWeight: '700', color: '#696969' }}>Laki Laki</Text>
+                                </View>
+                                <View style={{ backgroundColor: '#fff', width: 50, height: 49, alignItems: 'flex-end', justifyContent: 'center', borderRadius: 5 }}>
 
+                                </View>
+                            </View>
 
+                            <View style={{ height: 1, width: width / 1.10, alignItems: 'flex-end' }}>
+                                <View style={{ backgroundColor: "#dcdcdc", height: 1, width: width / 1.30 }}></View>
+                            </View>
 
+                            <View style={{ backgroundColor: '#fff', width: width / 1.15, height: 49, justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', borderRadius: 5, marginRight: 12 }}>
 
+                                <View style={{ backgroundColor: '#fff', width: 50, height: 49, alignItems: 'center', justifyContent: 'center', borderRadius: 5, marginLeft: 1 }}>
+                                    <Icon name="star" size={20} />
+                                </View>
+                                <View style={{ backgroundColor: '#fff', width: 240, height: 49, justifyContent: 'center' }}>
+                                    <Text style={{ fontWeight: '700', color: '#696969' }}>Siaga</Text>
+                                </View>
+                                <View style={{ backgroundColor: '#ff', width: 50, height: 49, alignItems: 'flex-end', justifyContent: 'center', borderRadius: 5 }}>
 
-
-
+                                </View>
+                            </View>
 
                         </View>
-                    </Animated.ScrollView>
 
 
+                        <View style={Platform.OS == 'android' ? [styles.menu2, { height: 52 }] : [styles.menu, { height: 52 }]}>
+                            <TouchableOpacity onPress={() => this.logout()} style={{ backgroundColor: '#fff', width: width / 1.15, height: 49, justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', borderRadius: 5, marginRight: 12 }}>
 
+                                <View style={{ backgroundColor: '#fff', width: 50, height: 49, alignItems: 'center', justifyContent: 'center', borderRadius: 5, marginLeft: 1 }}>
+                                    <Icon name="login" size={20} />
+                                </View>
+                                <View style={{ backgroundColor: '#fff', width: 240, height: 49, justifyContent: 'center' }}>
+                                    <Text style={{ fontWeight: '700', color: '#696969' }}>Logout</Text>
+                                </View>
+                                <View style={{ backgroundColor: '#fff', width: 50, height: 49, alignItems: 'flex-end', justifyContent: 'center', borderRadius: 5 }}>
 
-
-
-
-
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </Animated.ScrollView>
             </View>
         );
     }
@@ -248,10 +210,10 @@ const styles = StyleSheet.create({
         height: 202,
         marginTop: 20,
         borderRadius: 10,
-        shadowColor: '#dcdcdc',
+        shadowColor: '#808080',
         shadowOffset: { width: 0, height: 0 },
-        shadowOpacity: 50,
-        shadowRadius: 5,
+        shadowOpacity: 4,
+        shadowRadius: 4,
         alignItems: 'center',
         marginBottom: 10
 

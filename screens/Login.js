@@ -74,10 +74,10 @@ export default class Login extends Component {
 
     } else if (re.test(this.state.email)) {
       this.setState({ loading1: true })
-      
-            this.setState({ loading1: false, emailval: true })
 
-        
+      this.setState({ loading1: false, emailval: true })
+
+
     } else {
       if (this.state.email.length == 0) {
         this.setState({ errorEmail: 'Email Tidak Boleh Kosong' });
@@ -127,21 +127,50 @@ export default class Login extends Component {
       this.setState({ errorPass: 'Password Kurang Dari 8 Kata', loading1: false })
       this.view.bounce(800).then(endState => console.log(endState.finished ? 'bounce finished' : 'bounce cancelled'));
     } else {
-      try {
-        var user = {
+      return fetch(`http://${Ip}:3000/login`, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
           email: this.state.email,
-          password: this.state.password
-        };
+          password: this.state.password,
+        })
+      })
+        .then((response) => response.json())
+        .then((responseJson) => {
+          if (responseJson == "gagal") {
+            this.view.bounce(800).then(endState => console.log(endState.finished ? 'bounce finished' : 'bounce cancelled'));
+            this.setState({ loading1: false, errorPass: "Username Atau Password Salah" })
+          } else {
+            console.log(responseJson[0]);
+            var data = {
+              id_satpam: responseJson[0].id_satpam ? responseJson[0].id_satpam : '',
+              nama: responseJson[0].nama ? responseJson[0].nama : '',
+              email: responseJson[0].email ? responseJson[0].email : '',
+              password: responseJson[0].password ? responseJson[0].password : '',
+              foto: responseJson[0].foto ? responseJson[0].foto : '',
+              username: responseJson[0].username ? responseJson[0].username : '',
+              persistedFaceId: responseJson[0].persistedFaceId ? responseJson[0].persistedFaceId : '',
+            }
 
-        await AsyncStorage.setItem('user', JSON.stringify(user));
-        User.email  = this.state.email;
-        User.password = this.state.password;
-        this.setState({ loading1: false }); 
-        this.props.navigation.navigate("Tab");
-      } catch (e) {
-        alert("error");
-      }
-            
+            AsyncStorage.setItem('user', JSON.stringify(data));
+            User.id_satpam = responseJson[0].id_satpam ? responseJson[0].id_satpam : '';
+            User.nama = responseJson[0].nama ? responseJson[0].nama : '';
+            User.email = responseJson[0].email ? responseJson[0].email : '';
+            User.password = responseJson[0].password ? responseJson[0].password : '';
+            User.foto = responseJson[0].foto ? responseJson[0].foto : '';
+            User.username = responseJson[0].username ? responseJson[0].username : '';
+            User.persistedFaceId = responseJson[0].persistedFaceId ? responseJson[0].persistedFaceId : '';
+            this.setState({ loading1: false });
+            this.props.navigation.navigate("AuthLoading");
+          }
+        })
+        .catch((error) => {
+          alert("Jaringan Bermasalah");
+          this.setState({ loading1: false });
+        })
 
     }
   }
@@ -162,7 +191,7 @@ export default class Login extends Component {
       var angka = parseInt(email);
       console.log(typeof (1));
       if (isNaN(angka)) {
-        //alert("ini bukan telepon")
+        //alert("ini bukan telepon");
         this.setState({ errorEmail: 'Format Email Salah', emailvalidation: false });
       } else if (angka == 0) {
         //alert("ini telepon")
@@ -175,6 +204,11 @@ export default class Login extends Component {
       //this.view.bounce(800).then(endState => console.log(endState.finished ? 'bounce finished' : 'bounce cancelled'));
     }
   }
+
+  ubah() {
+    this.setState({ emailval: false, errorPass: '' })
+  }
+
 
 
   render() {
@@ -352,7 +386,7 @@ export default class Login extends Component {
               }}>
 
                 <View style={{ backgroundColor: 'black', width: layar.width / 5.50, height: layar.width / 5.50, borderRadius: 10, opacity: 1.90, alignItems: 'center', justifyContent: 'center' }}>
-                    <ActivityIndicator size={"large"} color={"#fff"}/>
+                  <ActivityIndicator size={"large"} color={"#fff"} />
                 </View>
               </View>
             </Modal>

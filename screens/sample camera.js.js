@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, TouchableOpacity, View, Dimensions, Image, ActivityIndicator, StatusBar } from 'react-native';
 import { RNCamera } from 'react-native-camera';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Icon3 from 'react-native-vector-icons/SimpleLineIcons';
 import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons';
 import RNFetchBlob from 'rn-fetch-blob'
 import { Ip } from '../config/Ip';
@@ -17,7 +16,7 @@ const HEADER_HEIGHT = Platform.OS === 'ios' ? (IS_IPHONE_X ? 90 : 65) : 65;
 const NAV_BAR_HEIGHT = HEADER_HEIGHT - STATUS_BAR_HEIGHT;
 const STATUS_BAR_HEIGHT2 = Platform.OS === 'ios' ? (IS_IPHONE_X ? 80 : 50) : 50;
 
-export default class Camera extends Component {
+export default class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -63,18 +62,18 @@ export default class Camera extends Component {
             { name: 'fileData', filename: 'image.jpg', type: 'image/jpg', data: this.state.data.base64 },
 
         ])
-            .then(res => res.json())
-            .then((resp) => {
-                console.log(resp.filename);
-                if (resp != 'error') {
-                    this.setState({ isLoading: false, });
-                    this.props.navigation.navigate("Validasi", { data: this.state.data, res: resp })
-                } else {
-                    alert("Koneksi Bermasalah")
-                }
-            }).catch((err) => {
-                console.log(err);
-            })
+        .then(res => res.json())
+        .then((resp) => {
+            console.log(resp.filename);
+            if(resp != 'error') {
+                this.setState({ isLoading: false, isTake: false });
+                this.props.navigation.navigate("Validasi", { data: this.state.data, res: resp })
+            } else {
+                alert("Koneksi Bermasalah")
+            }
+        }).catch((err) => {
+            console.log(err);
+        })
     }
 
     takePicture = async () => {
@@ -82,47 +81,27 @@ export default class Camera extends Component {
             const options = { quality: 0.5, base64: true };
             const data = await this.camera.takePictureAsync(options);
             console.log(data);
-            this.setState({ uri: data.uri, data: data });
+            this.setState({ uri: data.uri, data: data, isTake: true });
 
             console.log(data)
-            this.setState({ isLoading: true });
-            RNFetchBlob.fetch('POST', `http://${Ip}:3000/uploadI`, {
-                Authorization: "Bearer access-token",
-                otherHeader: "foo",
-                'Content-Type': 'multipart/form-data',
-                'Ocp-Apim-Subscription-Key': 'b2bd0d0ca6944aeb808c9f94bb423d6b'
-            }, [
-                { name: 'fileData', filename: 'image.jpg', type: 'image/jpg', data: this.state.data.base64 },
-
-            ])
-                .then(res => res.json())
-                .then((resp) => {
-                    console.log(resp.filename);
-                    if (resp != 'error') {
-                        console.log(resp)
-                        this.setState({ isLoading: false });
-                        this.props.navigation.navigate("Validasi", { data: this.state.data, res: resp })
-                        
-                    } else {
-                        alert("Koneksi Bermasalah")
-                    }
-                }).catch((err) => {
-                    console.log(err);
-                })
-            //this.props.navigation.navigate("Validasi", { data: data, uri: data.uri });
         }
     }
 
     render() {
 
-        const take = (
-            <TouchableOpacity onPress={() => this.setState({ fd: true, isTake: true })} style={[styles.capture]} disabled={false}></TouchableOpacity>
+        const hasil = (
+            <TouchableOpacity onPress={() => this.props.navigation.navigate("Validasi", { data: this.state.data })} style={{ height: '85%', width: width, borderRadius: 10, backgroundColor: '#fff' }} disabled={false}>
+
+                <Image source={this.state.uri == '' ? require('../images/Amin.jpg') : { uri: this.state.uri }} style={{ height: '100%', width: width }} />
+            </TouchableOpacity>
         );
 
-        const hilang = (
-            <View disabled={true}></View>
+        const bingkai = (
+            <View onPress={() => this.props.navigation.navigate("Validasi", { data: this.state.uri })} style={{ height: 80, width: 80, borderRadius: 10, backgroundColor: 'transparent' }} disabled={false}>
+
+
+            </View>
         );
-        
 
         return (
             <View style={styles.container}>
@@ -147,13 +126,11 @@ export default class Camera extends Component {
                     faceDetectionClassifications={RNCamera.Constants.FaceDetection.Classifications.all}
                     faceDetectionLandmarks={RNCamera.Constants.FaceDetection.Landmarks.all}
                     faceDetectionMode={RNCamera.Constants.FaceDetection.Mode.accurate}
-                    type={RNCamera.Constants.Type.front}
+                    type={RNCamera.Constants.Type.back}
                     onFacesDetected={face => {
                         if (this.state.fd) {
+                            alert(JSON.stringify(face));
                             this.setState({ result: face.faces.length != 0, fd: false });
-                            if (face.faces.length != 0) {
-                                this.takePicture();
-                            }
 
                         }
                     }}
@@ -165,16 +142,13 @@ export default class Camera extends Component {
                     </TouchableOpacity>
 
                 </View>
-                
-                <View style={{ width: width, height: 300, backgroundColor: 'transparent', alignItems: 'center', marginBottom: 90 }}>
-                    <Icon3 name={"frame"} size={200} color={"#fff"} />
-                </View>
-
                 <View style={{ flexDirection: 'row', width: width, backgroundColor: 'transparent', justifyContent: 'center', height: 120 }}>
-                    <TouchableOpacity style={{ height: 80, width: 80, borderRadius: 10, backgroundColor: 'transparent' }} disabled={false}>
+                    <TouchableOpacity onPress={this.takePicture.bind(this)} style={{ height: 80, width: 80, borderRadius: 10, backgroundColor: 'transparent' }} disabled={false}>
 
                     </TouchableOpacity>
-                    { this.state.isTake == false ? take : hilang }
+                    <TouchableOpacity onPress={this.takePicture.bind(this)} style={[styles.capture]} disabled={false}>
+
+                    </TouchableOpacity>
 
                     <View onPress={() => this.props.navigation.navigate("Validasi", { data: this.state.uri })} style={{ height: 80, width: 80, borderRadius: 10, backgroundColor: 'transparent' }} disabled={false}>
 
@@ -184,13 +158,32 @@ export default class Camera extends Component {
 
                 </View>
 
-                <Modal isVisible={this.state.isLoading} style={{ justifyContent: 'center', alignItems: 'center' }} animationIn={"fadeIn"}>
-                    <View style={{ backgroundColor: '#808080', borderRadius: 10, borderColor: 'rgba(0, 0, 0, 0.1)' }}>
-                        <View style={{ backgroundColor: '#808080', width: 70, height: 70, borderRadius: 10, alignItems: 'center', justifyContent: 'center' }}>
-                            <ActivityIndicator size={"small"} color={"#fff"} />
+
+
+                <Modal isVisible={this.state.isTake} style={{ justifyContent: 'flex-end', margin: 0 }} onBackdropPress={() => this.toggleModal()}>
+                    <View style={{ backgroundColor: 'white', borderRadius: 10, borderColor: 'rgba(0, 0, 0, 0.1)' }}>
+                        <View style={{ backgroundColor: '#000000', width: width, height: height, borderRadius: 10, alignItems: 'center' }}>
+                            {hasil}
+                            <View style={{ backgroundColor: '#000000', width: width, height: '15%', justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row' }}>
+                                <TouchableOpacity onPress={() => this.setState({ isTake: false })}>
+                                    <Icon2 name={"restart"} size={60} style={{ marginLeft: 20, marginTop: 30 }} color={"#fff"} />
+
+                                </TouchableOpacity>
+                                <TouchableOpacity onPress={() => this.proses()}>
+                                    <Icon2 name={"check-bold"} size={60} style={{ marginRight: 20, marginTop: 30 }} color={"#fff"} />
+                                </TouchableOpacity>
+                            </View>
                         </View>
                     </View>
+                    <Modal isVisible={this.state.isLoading} style={{ justifyContent: 'center', alignItems: 'center' }} animationIn={"fadeIn"}>
+                        <View style={{ backgroundColor: '#808080', borderRadius: 10, borderColor: 'rgba(0, 0, 0, 0.1)' }}>
+                            <View style={{ backgroundColor: '#808080', width: 70, height: 70, borderRadius: 10, alignItems: 'center', justifyContent: 'center' }}>
+                                <ActivityIndicator size={"small"} color={"#fff"} />
+                            </View>
+                        </View>
+                    </Modal>
                 </Modal>
+
 
 
 

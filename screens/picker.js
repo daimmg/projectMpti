@@ -12,10 +12,10 @@ import {
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { shadow } from 'react-native-paper';
+import ImagePicker from 'react-native-image-picker'
 import Modal from "react-native-modal";
 import { Ip } from '../config/Ip';
 import RNFetchBlob from 'rn-fetch-blob'
-import User from '../config/User';
 
 const { width, height } = Dimensions.get("window");
 
@@ -39,8 +39,68 @@ export default class Home extends Component {
     }
 
 
+    proses() {
+        const options = {
+            title: 'Select Avatar',
+            customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
+            storageOptions: {
+                skipBackup: true,
+                path: 'images',
+            },
+        };
+
+        /**
+         * The first arg is the options object for customization (it can also be null or omitted for default options),
+         * The second arg is the callback which sends object: response (more info in the API Reference)
+         */
+        ImagePicker.showImagePicker(options, (response) => {
+            console.log('Response = ', response);
+
+            if (response.didCancel) {
+                console.log('User cancelled image picker');
+            } else if (response.error) {
+                console.log('ImagePicker Error: ', response.error);
+            } else if (response.customButton) {
+                console.log('User tapped custom button: ', response.customButton);
+            } else {
+                const source = { uri: response.uri };
+
+                // You can also display the image using data:
+                // const source = { uri: 'data:image/jpeg;base64,' + response.data };
+
+                this.setState({
+                    avatarSource: source,
+                });
+
+                this.setState({ isLoading: true });
+                //alert("Test")
+                RNFetchBlob.fetch('POST', `http://${Ip}:3000/uploadI`, {
+                    Authorization: "Bearer access-token",
+                    otherHeader: "foo",
+                    'Content-Type': 'multipart/form-data',
+                    'Ocp-Apim-Subscription-Key': 'b2bd0d0ca6944aeb808c9f94bb423d6b'
+                }, [
+                    { name: 'fileData', filename: 'image.jpg', type: 'image/jpg', data: response.data },
+
+                ])
+                    .then(res => res.json())
+                    .then((resp) => {
+                        console.log(resp.filename);
+                        if (resp != 'error') {
+                            this.setState({ isLoading: false });
+                            this.props.navigation.navigate("Validasi", { data: response, res: resp })
+                        } else {
+                            alert("Koneksi Bermasalah")
+                        }
+                    }).catch((err) => {
+                        console.log(err);
+                    })
+
+            }
+        });
+    }
+
     render() {
-        console.log(User)
         return (
             <View style={styles.container}>
                 <StatusBar barStyle="light-content" />
